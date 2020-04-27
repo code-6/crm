@@ -8,18 +8,18 @@ import com.vaadin.flow.router.RouterLink;
 public class MainLayout extends AppLayout {
     public MainLayout() {
         initHeader();
-
     }
 
     private void initHeader() {
         var home = new Tab();
-        var page1 = new Tab();
-        var page2 = new Tab("Page 2");
+        var studentsList = new Tab();
+        var schoolList = new Tab();
 
         home.add(new RouterLink("Home", HomeView.class));
-        page1.add(new RouterLink("Page 1",Page1View.class));
+        studentsList.add(new RouterLink("Students", StudentsListView.class));
+        schoolList.add(new RouterLink("Schools", SchoolsListView.class));
 
-        var tabs = new Tabs(home, page1, page2);
+        var tabs = new Tabs(home, studentsList, schoolList);
         addToNavbar(tabs);
 
     }

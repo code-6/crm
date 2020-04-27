@@ -8,6 +8,7 @@ import vaadin.crm.backend.jpa.pojos.School;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SchoolService {
@@ -25,5 +26,17 @@ public class SchoolService {
     public void addSchool(String name, Address address) {
         schools.add(new School(name, address));
         logger.info("created new school. name: "+name+" address: "+address.toString());
+    }
+
+    public List<School> getSchools() {
+        return schools;
+    }
+
+    public Optional<School> getSchool(long id){
+        return schools.stream().filter(school -> school.getId() == id).findAny();
+    }
+
+    public Optional<School> getSchool(String name){
+        return schools.stream().filter(school -> school.getName().equalsIgnoreCase(name)).findAny();
     }
 }
